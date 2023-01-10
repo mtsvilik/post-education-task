@@ -18,4 +18,6 @@ public interface ConfigProvider {
     String USER1_PASSWORD = readConfig().getString("userParams.user1.password");
     String USER2_EMAIL = readConfig().getString("userParams.user2.email");
     String USER2_PASSWORD = readConfig().getString("userParams.user2.password");
+    String SEARCH_TEXT = readConfig().getString("searchText");
+    String USER_NAME = readConfig().getString("userName");
 }

@@ -13,7 +13,7 @@ public class LoginPage extends BasePage {
     private WebElement continueButton;
 
     @FindBy(css = "#ap_password")
-    private WebElement passwordButton;
+    private WebElement passwordField;
 
     @FindBy(css = "#signInSubmit")
     private WebElement signInButton;
@@ -22,9 +22,17 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public UserPage enterEmail(String email) {
+    public LoginPage enterEmail(String email) {
+        emailField.click();
         emailField.sendKeys(email);
         continueButton.click();
-        return new UserPage();
+        return new LoginPage();
+    }
+
+    public LoginPage enterPassword(String password) {
+        passwordField.click();
+        passwordField.sendKeys(password);
+        signInButton.click();
+        return new LoginPage();
     }
 }
