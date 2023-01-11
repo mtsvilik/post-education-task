@@ -13,6 +13,9 @@ public class SearchResultPage extends AbstractPage {
     @FindBy(css = "data-csa-c-item-id")
     private List<WebElement> resultProductList;
 
+    @FindBy(css = "[data-image-index='4']")
+    private WebElement firstSearchResult;
+
     public SearchResultPage() {
         PageFactory.initElements(driver, this);
     }
@@ -21,5 +24,10 @@ public class SearchResultPage extends AbstractPage {
         return resultProductList.stream()
                 .map(title -> title.toString().toLowerCase(Locale.ROOT))
                 .collect(Collectors.toList());
+    }
+
+    public ProductPage clickFirstSearchResult() {
+        firstSearchResult.click();
+        return new ProductPage();
     }
 }

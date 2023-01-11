@@ -21,4 +21,6 @@ public interface ConfigProvider {
     String USER_NAME = readConfig().getString("userName");
     String SIGNIN_TEXT = readConfig().getString("signInText");
     String CART_IS_EMPTY_TEXT = readConfig().getString("cartIsEmptyText");
+    String SEARCH_TEXT2 = readConfig().getString("searchText2");
+    String PRODUCT_TITLE = readConfig().getString("productTitle");
 }

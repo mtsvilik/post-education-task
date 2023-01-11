@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.util.List;
+import java.util.Locale;
 
 public class AmazonTest extends AbstractTest {
 
@@ -21,6 +22,7 @@ public class AmazonTest extends AbstractTest {
                 .forEach(title -> softAssert.assertTrue(title.contains(ConfigProvider.SEARCH_TEXT)));
         softAssert.assertAll();
     }
+
     @Test
     public void verifySignInTest() {
         HomePage homePage = new HomePage();
@@ -35,7 +37,7 @@ public class AmazonTest extends AbstractTest {
     }
 
     @Test
-    public void checkSignInNonExistentEmail() {
+    public void checkSignInNonExistentEmailTest() {
         HomePage homePage = new HomePage();
         homePage.clickSignInButton();
 
@@ -43,16 +45,33 @@ public class AmazonTest extends AbstractTest {
         signInPage.enterNonExistentEmail(ConfigProvider.USER2_EMAIL);
 
         String signInText = signInPage.getSignInText();
-        Assert.assertEquals(signInText, ConfigProvider.SIGNIN_TEXT, "Sign In page doesn't contain sign In text");
+        Assert.assertEquals(signInText, ConfigProvider.SIGNIN_TEXT, "Sign In page should contains sign in text");
     }
 
     @Test
-    public void checkAddCartButtonIsClickable() {
+    public void checkAddCartButtonIsClickableTest() {
         HomePage homePage = new HomePage();
         homePage.clickShoppingCartButton();
 
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         String cartIsEmptyText = shoppingCartPage.getCartIsEmptyText();
-        Assert.assertEquals(cartIsEmptyText, ConfigProvider.CART_IS_EMPTY_TEXT, "Shopping cart page doesn't contain Add to cart is empty text");
+        Assert.assertEquals(cartIsEmptyText, ConfigProvider.CART_IS_EMPTY_TEXT, "Shopping cart page should contains add to cart is empty text");
+    }
+
+    @Test
+    public void verifyProductIsAddedToCartTest() {
+        HomePage homePage = new HomePage();
+        homePage.openResultPage(ConfigProvider.SEARCH_TEXT2);
+
+        SearchResultPage searchResultPage = new SearchResultPage();
+        searchResultPage.clickFirstSearchResult();
+
+        ProductPage productPage = new ProductPage();
+        productPage.addToCart();
+
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+        shoppingCartPage.clickShoppingCartButton();
+        Assert.assertTrue(shoppingCartPage.getProductTitle().toLowerCase(Locale.ROOT).contains(ConfigProvider.PRODUCT_TITLE),
+                "Product in shopping cart with incorrect title.");
     }
 }
