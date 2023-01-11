@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage {
+public class SignInPage extends AbstractPage {
 
     @FindBy(css = "#ap_email")
     private WebElement emailField;
@@ -18,21 +18,35 @@ public class LoginPage extends BasePage {
     @FindBy(css = "#signInSubmit")
     private WebElement signInButton;
 
-    public LoginPage() {
+    @FindBy(css = ".a-list-item")
+    private WebElement signInText;
+
+    public SignInPage() {
         PageFactory.initElements(driver, this);
     }
 
-    public LoginPage enterEmail(String email) {
+    public SignInPage enterEmail(String email) {
         emailField.click();
         emailField.sendKeys(email);
         continueButton.click();
-        return new LoginPage();
+        return new SignInPage();
     }
 
-    public LoginPage enterPassword(String password) {
+    public SignInPage enterPassword(String password) {
         passwordField.click();
         passwordField.sendKeys(password);
         signInButton.click();
-        return new LoginPage();
+        return new SignInPage();
+    }
+
+    public SignInPage enterNonExistentEmail(String email) {
+        emailField.click();
+        emailField.sendKeys(email);
+        continueButton.click();
+        return new SignInPage();
+    }
+
+    public String getSignInText() {
+        return signInText.getText();
     }
 }

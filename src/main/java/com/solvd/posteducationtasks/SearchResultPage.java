@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class SearchResultPage extends BasePage {
+public class SearchResultPage extends AbstractPage {
 
     @FindBy(css = "data-csa-c-item-id")
     private List<WebElement> resultProductList;

@@ -2,7 +2,7 @@ package com.solvd.posteducationtasks;
 
 import org.openqa.selenium.WebDriver;
 
-public class BasePage {
+public class AbstractPage {
 
     protected static WebDriver driver;
 

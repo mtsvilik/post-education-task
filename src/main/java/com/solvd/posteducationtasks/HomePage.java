@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends BasePage {
+public class HomePage extends AbstractPage {
 
     @FindBy(css = "#twotabsearchtextbox")
     private WebElement searchBar;
@@ -18,6 +18,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "#nav-link-accountList-nav-line-1")
     private WebElement userNameButton;
 
+    @FindBy(css = "#nav-cart")
+    private WebElement shoppingCartButton;
+
     public HomePage() {
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
@@ -29,15 +32,20 @@ public class HomePage extends BasePage {
         return new SearchResultPage();
     }
 
-    public LoginPage clickSignInButton() {
+    public SignInPage clickSignInButton() {
         signInButton.click();
-        return new LoginPage();
+        return new SignInPage();
     }
 
     public String getUserName() {
         String userName = userNameButton.getText();
-        String[] arrOfStr = userName.split(" ");
-        userName = arrOfStr[1];
+        String[] array = userName.split(" ");
+        userName = array[1];
         return userName;
+    }
+
+    public ShoppingCartPage clickShoppingCartButton() {
+        shoppingCartButton.click();
+        return new ShoppingCartPage();
     }
 }

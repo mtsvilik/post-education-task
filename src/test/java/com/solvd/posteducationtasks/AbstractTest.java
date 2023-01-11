@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public class AbstractTest {
 
     protected WebDriver driver;
 
@@ -18,7 +18,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        BasePage.setDriver(driver);
+        AbstractPage.setDriver(driver);
     }
 
     @AfterTest
