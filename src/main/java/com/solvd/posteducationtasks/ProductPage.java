@@ -23,14 +23,14 @@ public class ProductPage extends AbstractPage {
     }
 
     public ShoppingCartPage addToCart() {
-        addToCartButton.click();
-        cartButton.click();
+        clickButton(addToCartButton);
+        clickButton(cartButton);
         return new ShoppingCartPage();
     }
 
     public void chooseQuantity() {
-        chooseQuantityButton.click();
-        quantity.click();
+        clickButton(chooseQuantityButton);
+        clickButton(quantity);
     }
 }
 

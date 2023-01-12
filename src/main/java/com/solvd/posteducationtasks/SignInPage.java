@@ -26,23 +26,23 @@ public class SignInPage extends AbstractPage {
     }
 
     public SignInPage enterEmail(String email) {
-        emailField.click();
-        emailField.sendKeys(email);
-        continueButton.click();
+        clickButton(emailField);
+        sendKeys(emailField, email);
+        clickButton(continueButton);
         return new SignInPage();
     }
 
     public SignInPage enterPassword(String password) {
-        passwordField.click();
-        passwordField.sendKeys(password);
-        signInButton.click();
+        clickButton(passwordField);
+        sendKeys(passwordField, password);
+        clickButton(signInButton);
         return new SignInPage();
     }
 
     public SignInPage enterNonExistentEmail(String email) {
-        emailField.click();
-        emailField.sendKeys(email);
-        continueButton.click();
+        clickButton(emailField);
+        sendKeys(emailField, email);
+        clickButton(continueButton);
         return new SignInPage();
     }
 

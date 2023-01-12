@@ -27,13 +27,13 @@ public class HomePage extends AbstractPage {
     }
 
     public SearchResultPage openResultPage(String searchText) {
-        searchBar.sendKeys(searchText);
-        searchButton.click();
+        sendKeys(searchBar, searchText);
+        clickButton(searchButton);
         return new SearchResultPage();
     }
 
     public SignInPage clickSignInButton() {
-        signInButton.click();
+        clickButton(signInButton);
         return new SignInPage();
     }
 
@@ -45,7 +45,7 @@ public class HomePage extends AbstractPage {
     }
 
     public ShoppingCartPage clickShoppingCartButton() {
-        shoppingCartButton.click();
+        clickButton(shoppingCartButton);
         return new ShoppingCartPage();
     }
 }

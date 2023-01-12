@@ -6,8 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import java.util.concurrent.TimeUnit;
-
 public abstract class AbstractTest {
 
     protected WebDriver driver;
@@ -16,8 +14,6 @@ public abstract class AbstractTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         AbstractPage.setDriver(driver);
     }
 

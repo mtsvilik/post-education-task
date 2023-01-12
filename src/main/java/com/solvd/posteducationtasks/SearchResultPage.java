@@ -27,7 +27,7 @@ public class SearchResultPage extends AbstractPage {
     }
 
     public ProductPage clickFirstSearchResult() {
-        firstSearchResult.click();
+        clickButton(firstSearchResult);
         return new ProductPage();
     }
 }
