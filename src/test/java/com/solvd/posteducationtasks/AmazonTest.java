@@ -31,9 +31,7 @@ public class AmazonTest extends AbstractTest {
         SignInPage signInPage = new SignInPage();
         signInPage.enterEmail(ConfigProvider.USER1_EMAIL);
         signInPage.enterPassword(ConfigProvider.USER1_PASSWORD);
-
-        String userName = homePage.getUserName();
-        Assert.assertEquals(userName, ConfigProvider.USER_NAME, "Name of account should contains user name");
+        Assert.assertEquals(homePage.getUserName(), ConfigProvider.USER_NAME, "Name of account should contains user name");
     }
 
     @Test
@@ -43,9 +41,7 @@ public class AmazonTest extends AbstractTest {
 
         SignInPage signInPage = new SignInPage();
         signInPage.enterNonExistentEmail(ConfigProvider.USER2_EMAIL);
-
-        String signInText = signInPage.getSignInText();
-        Assert.assertEquals(signInText, ConfigProvider.SIGNIN_TEXT, "Sign In page should contains sign in text");
+        Assert.assertEquals(signInPage.getSignInText(), ConfigProvider.SIGNIN_TEXT, "Sign In page should contains sign in text");
     }
 
     @Test
@@ -54,8 +50,7 @@ public class AmazonTest extends AbstractTest {
         homePage.clickShoppingCartButton();
 
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-        String cartIsEmptyText = shoppingCartPage.getCartIsEmptyText();
-        Assert.assertEquals(cartIsEmptyText, ConfigProvider.CART_IS_EMPTY_TEXT, "Shopping cart page should contains add to cart is empty text");
+        Assert.assertEquals(shoppingCartPage.getCartIsEmptyText(), ConfigProvider.CART_IS_EMPTY_TEXT, "Shopping cart page should contains add to cart is empty text");
     }
 
     @Test
@@ -72,6 +67,22 @@ public class AmazonTest extends AbstractTest {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         shoppingCartPage.clickShoppingCartButton();
         Assert.assertTrue(shoppingCartPage.getProductTitle().toLowerCase(Locale.ROOT).contains(ConfigProvider.PRODUCT_TITLE),
-                "Product in shopping cart with incorrect title.");
+                "Product in shopping cart with incorrect title");
+    }
+
+    @Test
+    public void checkIncreaseProductInCartTest() {
+        HomePage homePage = new HomePage();
+        homePage.openResultPage(ConfigProvider.SEARCH_TEXT2);
+
+        SearchResultPage searchResultPage = new SearchResultPage();
+        searchResultPage.clickFirstSearchResult();
+
+        ProductPage productPage = new ProductPage();
+        productPage.chooseQuantity();
+        productPage.addToCart();
+
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+        Assert.assertEquals(shoppingCartPage.getValue(), ConfigProvider.QUANTITY, "Incorrect quantity product in shopping cart");
     }
 }

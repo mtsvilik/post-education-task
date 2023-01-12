@@ -23,4 +23,5 @@ public interface ConfigProvider {
     String CART_IS_EMPTY_TEXT = readConfig().getString("cartIsEmptyText");
     String SEARCH_TEXT2 = readConfig().getString("searchText2");
     String PRODUCT_TITLE = readConfig().getString("productTitle");
+    String QUANTITY = readConfig().getString("quantity");
 }

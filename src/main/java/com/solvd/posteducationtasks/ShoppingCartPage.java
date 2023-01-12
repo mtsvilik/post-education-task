@@ -15,6 +15,9 @@ public class ShoppingCartPage extends AbstractPage {
     @FindBy(xpath = "//*[@class='a-truncate-cut' and contains(text(), 'iPhone')]")
     private WebElement title;
 
+    @FindBy(css = ".a-dropdown-prompt")
+    private WebElement value;
+
     public ShoppingCartPage() {
         PageFactory.initElements(driver, this);
     }
@@ -29,5 +32,9 @@ public class ShoppingCartPage extends AbstractPage {
 
     public String getProductTitle() {
         return title.getText();
+    }
+
+    public String getValue() {
+        return value.getText();
     }
 }

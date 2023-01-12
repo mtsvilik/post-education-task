@@ -12,6 +12,12 @@ public class ProductPage extends AbstractPage {
     @FindBy(css = "[aria-labelledby='attach-sidesheet-view-cart-button-announce']")
     private WebElement cartButton;
 
+    @FindBy(css ="#a-autoid-0")
+    private WebElement chooseQuantityButton;
+
+    @FindBy(css = "#quantity_4")
+    private WebElement quantity;
+
     public ProductPage() {
         PageFactory.initElements(driver, this);
     }
@@ -20,6 +26,11 @@ public class ProductPage extends AbstractPage {
         addToCartButton.click();
         cartButton.click();
         return new ShoppingCartPage();
+    }
+
+    public void chooseQuantity() {
+        chooseQuantityButton.click();
+        quantity.click();
     }
 }
 
