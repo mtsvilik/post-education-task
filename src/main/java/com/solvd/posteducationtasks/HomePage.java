@@ -1,5 +1,6 @@
 package com.solvd.posteducationtasks;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,7 +22,8 @@ public class HomePage extends AbstractPage {
     @FindBy(css = "#nav-cart")
     private WebElement shoppingCartButton;
 
-    public HomePage() {
+    public HomePage(WebDriver driver) {
+        super(driver);
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
     }
@@ -29,12 +31,12 @@ public class HomePage extends AbstractPage {
     public SearchResultPage openResultPage(String searchText) {
         sendKeys(searchBar, searchText);
         clickButton(searchButton);
-        return new SearchResultPage();
+        return new SearchResultPage(driver);
     }
 
     public SignInPage clickSignInButton() {
         clickButton(signInButton);
-        return new SignInPage();
+        return new SignInPage(driver);
     }
 
     public String getUserName() {
@@ -46,6 +48,6 @@ public class HomePage extends AbstractPage {
 
     public ShoppingCartPage clickShoppingCartButton() {
         clickButton(shoppingCartButton);
-        return new ShoppingCartPage();
+        return new ShoppingCartPage(driver);
     }
 }

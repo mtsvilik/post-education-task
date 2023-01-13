@@ -1,5 +1,6 @@
 package com.solvd.posteducationtasks;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,7 +22,8 @@ public class SignInPage extends AbstractPage {
     @FindBy(css = ".a-list-item")
     private WebElement signInText;
 
-    public SignInPage() {
+    public SignInPage(WebDriver driver) {
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -29,21 +31,21 @@ public class SignInPage extends AbstractPage {
         clickButton(emailField);
         sendKeys(emailField, email);
         clickButton(continueButton);
-        return new SignInPage();
+        return new SignInPage(driver);
     }
 
     public SignInPage enterPassword(String password) {
         clickButton(passwordField);
         sendKeys(passwordField, password);
         clickButton(signInButton);
-        return new SignInPage();
+        return new SignInPage(driver);
     }
 
     public SignInPage enterNonExistentEmail(String email) {
         clickButton(emailField);
         sendKeys(emailField, email);
         clickButton(continueButton);
-        return new SignInPage();
+        return new SignInPage(driver);
     }
 
     public String getSignInText() {

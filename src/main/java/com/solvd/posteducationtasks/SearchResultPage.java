@@ -1,5 +1,6 @@
 package com.solvd.posteducationtasks;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -13,10 +14,11 @@ public class SearchResultPage extends AbstractPage {
     @FindBy(css = "data-csa-c-item-id")
     private List<WebElement> resultProductList;
 
-    @FindBy(css = "[data-image-index='4']")
-    private WebElement firstSearchResult;
+    @FindBy(css = "[data-image-index='2']")
+    private WebElement searchResult;
 
-    public SearchResultPage() {
+    public SearchResultPage(WebDriver driver) {
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -26,8 +28,8 @@ public class SearchResultPage extends AbstractPage {
                 .collect(Collectors.toList());
     }
 
-    public ProductPage clickFirstSearchResult() {
-        clickButton(firstSearchResult);
-        return new ProductPage();
+    public ProductPage clickSearchResult() {
+        clickButton(searchResult);
+        return new ProductPage(driver);
     }
 }
