@@ -1,10 +1,11 @@
 package com.solvd.posteducationtasks;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends BasePage {
+public class HomePage extends AbstractPage {
 
     @FindBy(css = "#twotabsearchtextbox")
     private WebElement searchBar;
@@ -18,26 +19,35 @@ public class HomePage extends BasePage {
     @FindBy(css = "#nav-link-accountList-nav-line-1")
     private WebElement userNameButton;
 
-    public HomePage() {
+    @FindBy(css = "#nav-cart")
+    private WebElement shoppingCartButton;
+
+    public HomePage(WebDriver driver) {
+        super(driver);
         driver.get(ConfigProvider.URL);
         PageFactory.initElements(driver, this);
     }
 
     public SearchResultPage openResultPage(String searchText) {
-        searchBar.sendKeys(searchText);
-        searchButton.click();
-        return new SearchResultPage();
+        sendKeys(searchBar, searchText);
+        clickButton(searchButton);
+        return new SearchResultPage(driver);
     }
 
-    public LoginPage clickSignInButton() {
-        signInButton.click();
-        return new LoginPage();
+    public SignInPage clickSignInButton() {
+        clickButton(signInButton);
+        return new SignInPage(driver);
     }
 
     public String getUserName() {
         String userName = userNameButton.getText();
-        String[] arrOfStr = userName.split(" ");
-        userName = arrOfStr[1];
+        String[] array = userName.split(" ");
+        userName = array[1];
         return userName;
+    }
+
+    public ShoppingCartPage clickShoppingCartButton() {
+        clickButton(shoppingCartButton);
+        return new ShoppingCartPage(driver);
     }
 }
