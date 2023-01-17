@@ -13,6 +13,6 @@ public class ScreenshotListener extends AbstractTest implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         LOGGER.info("Test FAILED");
-        failedScreenshot();
+        failedScreenshot(result.getName());
     }
 }

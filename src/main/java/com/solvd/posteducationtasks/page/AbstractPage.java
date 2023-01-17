@@ -23,6 +23,11 @@ public abstract class AbstractPage {
                 .until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
+    public void clickButton(WebElement element, int multiplier) {
+        new WebDriverWait(driver, TIMEOUT.multipliedBy(multiplier))
+                .until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
     public void sendKeys(WebElement element, String input) {
         new WebDriverWait(driver, TIMEOUT)
                 .until(ExpectedConditions.visibilityOf(element)).sendKeys(input);

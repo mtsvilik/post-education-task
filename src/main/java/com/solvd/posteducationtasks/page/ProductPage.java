@@ -26,7 +26,7 @@ public class ProductPage extends AbstractPage {
 
     public ShoppingCartPage addToCart() {
         clickButton(addToCartButton);
-        clickButton(cartButton);
+        clickButton(cartButton, 5);
         return new ShoppingCartPage(driver);
     }
 

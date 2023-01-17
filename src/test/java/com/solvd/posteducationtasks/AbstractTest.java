@@ -39,12 +39,12 @@ public abstract class AbstractTest {
         getDriver().quit();
     }
 
-    public void failedScreenshot() {
+    public void failedScreenshot(String testMethodName) {
         File scrFile = ((TakesScreenshot) remoteDriver.get()).getScreenshotAs(OutputType.FILE);
         Date date = new Date();
         String timeStamp = date.toString().replace(":", "_").replace(" ", "_");
         try {
-            FileUtils.copyFile(scrFile, new File("./screenshots/" + "_" + timeStamp + ".png"));
+            FileUtils.copyFile(scrFile, new File("./screenshots/" + testMethodName + "_" + timeStamp + ".png"));
         } catch (IOException e) {
             LOGGER.error(e);
         }

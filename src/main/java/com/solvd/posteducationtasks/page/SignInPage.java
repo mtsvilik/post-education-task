@@ -22,6 +22,9 @@ public class SignInPage extends AbstractPage {
     @FindBy(css = ".a-list-item")
     private WebElement signInText;
 
+    @FindBy(xpath = "//*[@class='a-alert-heading']")
+    private WebElement signInMessage;
+
     public SignInPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
