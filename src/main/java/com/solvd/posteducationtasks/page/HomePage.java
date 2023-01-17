@@ -1,5 +1,6 @@
-package com.solvd.posteducationtasks;
+package com.solvd.posteducationtasks.page;
 
+import com.solvd.posteducationtasks.service.ConfigProvider;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

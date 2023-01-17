@@ -1,4 +1,4 @@
-package com.solvd.posteducationtasks;
+package com.solvd.posteducationtasks.service;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
