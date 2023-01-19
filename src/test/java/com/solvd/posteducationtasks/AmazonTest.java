@@ -2,8 +2,6 @@ package com.solvd.posteducationtasks;
 
 import com.solvd.posteducationtasks.page.*;
 import com.solvd.posteducationtasks.service.ConfigProvider;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -13,12 +11,8 @@ import java.util.Locale;
 
 public class AmazonTest extends AbstractTest {
 
-    private static final Logger LOGGER = LogManager.getLogger(AmazonTest.class);
-
     @Test
     public void verifySearchResultsTest() {
-        LOGGER.info("VerifySearchResultsTest - Started! " + "Thread Id: " + Thread.currentThread().getId());
-
         HomePage homePage = new HomePage(getDriver());
         SearchResultPage searchResultPage = homePage.openResultPage(ConfigProvider.SEARCH_TEXT);
         List<String> titles = searchResultPage.findResults();
@@ -27,12 +21,10 @@ public class AmazonTest extends AbstractTest {
         titles
                 .forEach(title -> softAssert.assertTrue(title.contains(ConfigProvider.SEARCH_TEXT)));
         softAssert.assertAll();
-        LOGGER.info("VerifySearchResultsTest - Ended! " + "Thread Id: " + Thread.currentThread().getId());
     }
 
     @Test
     public void verifySignInTest() {
-        LOGGER.info("VerifySignInTest - Started! " + "Thread Id: " + Thread.currentThread().getId());
         HomePage homePage = new HomePage(getDriver());
 
         SignInPage signInPage = homePage.clickSignInButton();

@@ -7,48 +7,42 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage extends AbstractPage {
 
-    @FindBy(css = "#ap_email")
+    @FindBy(id = "ap_email")
     private WebElement emailField;
 
     @FindBy(css = ".a-button-input")
     private WebElement continueButton;
 
-    @FindBy(css = "#ap_password")
+    @FindBy(id = "ap_password")
     private WebElement passwordField;
 
-    @FindBy(css = "#signInSubmit")
+    @FindBy(id = "signInSubmit")
     private WebElement signInButton;
 
     @FindBy(css = ".a-list-item")
     private WebElement signInText;
-
-    @FindBy(xpath = "//*[@class='a-alert-heading']")
-    private WebElement signInMessage;
 
     public SignInPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public SignInPage enterEmail(String email) {
+    public void enterEmail(String email) {
         clickButton(emailField);
         sendKeys(emailField, email);
         clickButton(continueButton);
-        return new SignInPage(driver);
     }
 
-    public SignInPage enterPassword(String password) {
+    public void enterPassword(String password) {
         clickButton(passwordField);
         sendKeys(passwordField, password);
         clickButton(signInButton);
-        return new SignInPage(driver);
     }
 
-    public SignInPage enterNonExistentEmail(String email) {
+    public void enterNonExistentEmail(String email) {
         clickButton(emailField);
         sendKeys(emailField, email);
         clickButton(continueButton);
-        return new SignInPage(driver);
     }
 
     public String getSignInText() {

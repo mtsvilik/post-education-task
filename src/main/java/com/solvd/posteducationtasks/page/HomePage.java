@@ -8,19 +8,19 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends AbstractPage {
 
-    @FindBy(css = "#twotabsearchtextbox")
+    @FindBy(id = "twotabsearchtextbox")
     private WebElement searchBar;
 
-    @FindBy(css = "#nav-search-submit-button")
+    @FindBy(id = "nav-search-submit-button")
     private WebElement searchButton;
 
     @FindBy(css = "[data-nav-ref='nav_ya_signin']")
     private WebElement signInButton;
 
-    @FindBy(css = "#nav-link-accountList-nav-line-1")
+    @FindBy(id = "nav-link-accountList-nav-line-1")
     private WebElement userNameButton;
 
-    @FindBy(css = "#nav-cart")
+    @FindBy(id = "nav-cart")
     private WebElement shoppingCartButton;
 
     public HomePage(WebDriver driver) {

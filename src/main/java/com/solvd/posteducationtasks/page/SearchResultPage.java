@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class SearchResultPage extends AbstractPage {
 
-    @FindBy(css = "data-csa-c-item-id")
+    @FindBy(id = "data-csa-c-item-id")
     private List<WebElement> resultProductList;
 
     @FindBy(css = "[data-image-index='2']")

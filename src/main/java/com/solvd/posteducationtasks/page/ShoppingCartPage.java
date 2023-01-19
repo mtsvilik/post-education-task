@@ -10,11 +10,8 @@ public class ShoppingCartPage extends AbstractPage {
     @FindBy(xpath = "//*[@class='a-row sc-your-amazon-cart-is-empty']")
     private WebElement cartIsEmptyText;
 
-    @FindBy(css = "#nav-cart")
+    @FindBy(id = "nav-cart")
     private WebElement shoppingCartButton;
-
-    @FindBy(css = "[data-csa-c-content-id='sw-gtc_CONTENT']")
-    private WebElement smallShoppingCartButton;
 
     @FindBy(xpath = "//*[@class='a-truncate-cut' and contains(text(), 'iPhone')]")
     private WebElement title;

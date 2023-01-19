@@ -13,10 +13,10 @@ public class ProductPage extends AbstractPage {
     @FindBy(css = "[aria-labelledby='attach-sidesheet-view-cart-button-announce']")
     private WebElement cartButton;
 
-    @FindBy(css = "#a-autoid-0")
+    @FindBy(id = "a-autoid-0")
     private WebElement chooseQuantityButton;
 
-    @FindBy(css = "#quantity_1")
+    @FindBy(id = "quantity_1")
     private WebElement quantity;
 
     public ProductPage(WebDriver driver) {
